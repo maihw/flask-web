@@ -18,4 +18,6 @@ def maihw():
 
 @app.errorhandler(401)
 def page_not_found(error):
-    return render_template('page_not_found.html'), 404
+    resp = make_response(render_template('page_not_found.html'), 404)
+    resp.headers['x-Something'] = 'A value'
+    return resp
